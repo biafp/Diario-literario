@@ -1,0 +1,124 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #cea6d1;
+    margin: 0;
+}
+
+.container{
+    width: 95%;
+    max-width:500px;
+    margin:20px auto;
+    background: rgb(228, 228, 230);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+h1,h2{
+    text-align: center;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+textarea{
+    height: 180px;
+    resize: none;
+}
+
+button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: #198f46;
+    color: aliceblue;
+    font-size: 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #80054c;
+}
+
+.livro{
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.livro{
+    background: white;
+    border-left: 5px solid #d76ba3;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.livro h3{
+    margin: 0;
+    color: #d76ba3;
+}
+
+.livro p{
+    white-space: pre-wrap;
+    margin: 10px 0;
+    color: #555;
+}
+
+.botoes{
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.livro button{
+    width: 48%;
+    margin-top: 10px;
+}
+
+.livro button:first-of-type{
+    background: #2196F3;
+    color: white;
+}
+
+.livro button:last-of-type{
+    background: #f44336;
+    color: white;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+label{
+    font-weight:bold;
+    color:#555;
+}
+
+input[type="file"]{
+    margin:10px 0;
+}
+
+
+#pdf{
+    background: #e53935;
+    color: white;
+    
+}
+
+#pdf:hover{
+    background: #80054c;
+}
