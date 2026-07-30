@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Leitura</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📚 Diário de Leitura</h1>
+
+        <input
+            type="text"
+            id="titulo"
+            placeholder="Nome do livro">
+
+
+        <label>Nota</label>
+
+        <select id="nota">
+            <option value="⭐">⭐</option>
+            <option value="⭐⭐">⭐⭐</option>
+            <option value="⭐⭐⭐">⭐⭐⭐</option>
+            <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+            <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+        </select>
+
+        <textarea
+            id="resenha"
+            rows="8"
+            placeholder="Escreva sua resenha..."></textarea>
+
+        <button id="salvar">
+            💾 Salvar
+        </button>
+
+        <button id="pdf">
+            📄Baixar pdf
+        </button>
+
+        <hr>
+
+        <div id="listaLivros"></div>
+
+    </div>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
