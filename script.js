@@ -1,5 +1,4 @@
 const titulo = document.getElementById("titulo");
-const imagem = document.getElementById("imagem");
 const nota = document.getElementById("nota");
 const resenha = document.getElementById("resenha");
 const botaoSalvar = document.getElementById("salvar");
@@ -18,7 +17,6 @@ mostrarLivros();
 // Evento do botão
 botaoSalvar.addEventListener("click", salvarLivro);
 botaoPDF.addEventListener("click", gerarPDF);
-botaocorrigir.addEventListener("click", corrigirtexto);
 
 // =======================
 // SALVAR LIVRO
@@ -30,30 +28,7 @@ function salvarLivro() {
         return;
     }
 
-    const arquivo = imagem.files[0];
-
-    if (arquivo) {
-
-        const leitor = new FileReader();
-
-        leitor.onload = function () {
-            salvar(leitor.result);
-        };
-
-        leitor.readAsDataURL(arquivo);
-
-    } else {
-
-        let capa = "";
-
-        if (editando !== null) {
-            capa = livros[editando].imagem;
-        }
-
-        salvar(capa);
-
-    }
-
+    salvar(""); // salva o livro sem capa
 }
 
 // =======================
@@ -165,7 +140,6 @@ function excluirLivro(indice) {
 function limparCampos() {
 
     titulo.value = "";
-    imagem.value = "";
     nota.selectedIndex = 0;
     resenha.value = "";
 
@@ -218,78 +192,5 @@ async function gerarPDF() {
     });
 
     pdf.save("Diario_de_Leitura.pdf");
-
-}
-async function corrigirTexto() {
-
-    const texto = document.getElementById("resenha").value;
-    const resultado = document.getElementById("resultadoCorrecao");
-
-    if(texto.trim() === ""){
-        resultado.innerHTML = "Digite um texto primeiro.";
-        return;
-    }
-
-    resultado.innerHTML = "Corrigindo... ✨";
-
-
-    const API_KEY = "AQ.Ab8RN6I5b_sUvFKyDHadjtYwgwcTbl-Wtb0c_vAL1cqYM7dtcA";
-
-
-    try {
-
-        const resposta = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-        {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-
-                contents:[
-                    {
-                        parts:[
-                            {
-                                text:
-                                `Corrija o texto abaixo mantendo o estilo original.
-                                Corrija ortografia, pontuação e gramática.
-                                Não mude o sentido.
-
-                                Texto:
-                                ${texto}`
-                            }
-                        ]
-                    }
-                ]
-
-            })
-        });
-
-
-        const dados = await resposta.json();
-
-        console.log(JSON.stringify(dados, null, 2));
-
-
-        const correcao =
-        dados.candidates[0].content.parts[0].text;
-
-
-        resultado.innerHTML = `
-        <h3>Texto corrigido:</h3>
-        <p>${correcao}</p>
-        `;
-
-
-    } catch(error){
-
-        resultado.innerHTML =
-        "Erro ao corrigir texto 😢";
-
-        console.log(error);
-
-    }
 
 }
